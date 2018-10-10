@@ -6,15 +6,27 @@ Function Get-AppveyorCIVariableValues {
     return $return
 }
 
-Write-host "[VARIABLES] Exporting Variables (outside)"-ForegroundColor Green
-Get-AppveyorCIVariableValues | Select Name,Value,Description | FT -AutoSize #| export-csv -path $ExportFile -NoTypeInformation
-Get-Variable | sort Name #? {$_.Name -like "CI*" -or $_.Name -like "APPVEYOR_*" -or $_.Name -like "CONFIGURATION" -OR $_.Name -like "PLATFORM"} | Select Name,Value
+
 if($env:APPVEYOR_REPO_COMMIT_MESSAGE -match ".*show_var.*"){
     Write-host "[VARIABLES] Exporting Variables"-ForegroundColor DarkGreen
-    #$ExportFile = join-Path -Path $BuildPath -ChildPath "CI_Variables.csv"
-    Get-AppveyorCIVariableValues | Select Name,Value,Description | FT -AutoSize #| export-csv -path $ExportFile -NoTypeInformation
+    
+    gci env:\ | sort Name | select Name,Value,Description
+   
 }
 
-Write-Host "New Style" -foregroundColor Yellow
-dir env:\
+write-host "Vars: Local" -ForeGroundColor "Yellow"
+
+Get-Variable -Scope Local
+
+write-host "Vars: Script" -ForeGroundColor "red"
+
+Get-Variable -Scope Script
+
+write-host "Vars: Global" -ForeGroundColor "DarkMagenta"
+
+Get-Variable -Scope Global
+
+
+
+
  
