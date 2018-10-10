@@ -5,7 +5,7 @@ install:
     Install-Module -Name PSScriptAnalyzer -Force
     
     Install-Module -Name Pester -Force
-build: on
+build: off
 test_script:
 - ps: >- 
     .\CI\Start_CI.ps1
