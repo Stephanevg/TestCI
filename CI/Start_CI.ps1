@@ -14,4 +14,7 @@ if($env:APPVEYOR_REPO_COMMIT_MESSAGE -match ".*show_var.*"){
     #$ExportFile = join-Path -Path $BuildPath -ChildPath "CI_Variables.csv"
     Get-AppveyorCIVariableValues | Select Name,Value,Description | FT -AutoSize #| export-csv -path $ExportFile -NoTypeInformation
 }
+
+Write-Host "New Style" -foregroundColor Yellow
+dir env:\
  
