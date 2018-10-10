@@ -8,4 +8,4 @@ install:
 build: off
 test_script:
 - ps: >- 
-    .\CI\CI_Start.ps1
+    .\CI_Start.ps1
