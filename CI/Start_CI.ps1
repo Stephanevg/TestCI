@@ -14,5 +14,5 @@ if($env:APPVEYOR_REPO_COMMIT_MESSAGE -match ".*show_var.*"){
     gci env:\ | sort Name | select Name,Value,Description
     
 }
-
+# plop
 gci env:\ | sort Name | select Name,Value,Description
