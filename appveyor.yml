@@ -1,3 +1,7 @@
+image:
+- WMF5
+- Core
+- Ubuntu
 install:
 - ps: >-
     Install-PackageProvider -Name NuGet -Force
